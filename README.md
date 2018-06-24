@@ -1,5 +1,7 @@
 # crappycli 💩
 
+[![CircleCI](https://circleci.com/gh/skellock/crappycli.svg?style=svg)](https://circleci.com/gh/skellock/crappycli)
+
 A crappy [`nim`](https://nim-lang.org) package for parsing command line arguments.
 
 
