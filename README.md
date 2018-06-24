@@ -7,6 +7,8 @@ A crappy [`nim`](https://nim-lang.org) package for parsing command line argument
 
 I'm new at `nim` and am extracting this from one of my projects to get used to writing packages.
 
+You probably want to use one of the many other CLI argument parsing packages instead.  😃
+
 
 # Installing
 
