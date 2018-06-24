@@ -1,8 +1,8 @@
 import crappycli
 
 let 💩 = newCrappyCli(
-  params = @["-i", "", "throw", "", "my", "thing", "-down", " --flip", " it ", "and", "--reverse", "it"],
-  flags = @["reverse", "work"],
+    params = @["-i", "", "throw", "", "my", "thing", "-down", " --flip", " it ", "and", "--reverse", "it"],
+    flags = @["reverse", "work"],
 )
 doAssert 💩.has("i")
 doAssert 💩.has("throw").not
