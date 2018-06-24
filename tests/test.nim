@@ -34,7 +34,7 @@ doAssert 💩.switchCount == 4
 doAssert 💩.positionalCount == 4
 doAssert 💩.empty.not
 
-let 🦗 = newCrappyCli(@[])
-doAssert 🦗.switchCount == 0
-doAssert 🦗.positionalCount == 0
-doAssert 🦗.empty
+doAssert newCrappyCli().empty
+doAssert newCrappyCli(params = @[]).empty
+doAssert newCrappyCli(flags = @[]).empty
+doAssert newCrappyCli(params = @[], flags = @[]).empty

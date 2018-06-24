@@ -21,10 +21,9 @@ Or, hey, just copy the `crappycli.nim` file and paste it into your project. 💃
 
 ```nim
 import crappycli
-from os import commandLineParams
 
 # new crappy cli!
-let cli = newCrappyCli(commandLineParams())
+let cli = newCrappyCli()
 
 # check for a switch that's just a flag
 cli.has('force')
@@ -45,7 +44,6 @@ cli.positionalCount
 cli.empty
 ```
 
-
 ### Ambiguous Switches
 
 Sometimes your switches will be flags; meaning, they don't have a value associated with them.
@@ -57,7 +55,9 @@ Look, I told ya it was crappy! 🎰
 ```nim
 # alternate way to create it by telling it switches
 # which have no values
-let cli = commandLineParams.newCrappyCli(@["verbose"])
+let cli = commandLineParams.newCrappyCli(
+  flags = @["verbose"]
+)
 
 # ^ used for corner cases where you have positionals
 # right after switches, for example:
@@ -66,6 +66,16 @@ let cli = commandLineParams.newCrappyCli(@["verbose"])
 #
 # ^ in this case, we want the `-v` to be a flag and
 # the `filename.json` to be a positional.
+```
+
+### DIY commandLineParams
+
+By default, `CrappyCli` tries to read from `commandLineParams` from `os`. You can override this:
+
+```nim
+let cli = commandLineParams.newCrappyCli(
+  params = @["omg", "custom", "-v"]
+)
 ```
 
 

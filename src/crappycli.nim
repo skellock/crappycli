@@ -1,6 +1,7 @@
 from strutils import strip, startsWith, isNilOrEmpty
 from tables import initTable, Table, hasKey, `[]`, add, len
 from sequtils import filter
+from os import commandLineParams
 
 
 type
@@ -90,7 +91,7 @@ proc empty* (crappy: CrappyCli): bool {.noSideEffect.} =
 #---- Initialization ----#
 
 
-proc newCrappyCli* (params: seq[string], flags: seq[string] = @[]): CrappyCli =
+proc newCrappyCli* (params: seq[string] = commandLineParams(), flags: seq[string] = @[]): CrappyCli =
     ## Normalizes and organizes the command line arguments.
     new(result)
 
