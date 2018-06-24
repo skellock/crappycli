@@ -28,5 +28,4 @@ jobs:
       -
         run:
           command: |
-            nimble build -y
             nimble test
