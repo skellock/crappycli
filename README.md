@@ -28,10 +28,10 @@ import crappycli
 let cli = newCrappyCli()
 
 # check for a switch that's just a flag
-cli.has('force')
+cli.has("force")
 
 # read a switch that has a value
-cli['output']
+cli["output"]
 
 # read positional arguments
 cli.first
@@ -50,7 +50,7 @@ cli.empty
 
 Sometimes your switches will be flags; meaning, they don't have a value associated with them.
 
-By default, switches consume the next word after them... so, if you want to keep those as positional arguments, then you've gotta tell `CrappyCli` about your flags up front.  
+By default, switches consume the next word after them... so, if you want to keep those as positional arguments, then you've gotta tell `CrappyCli` about your flags up front.
 
 Look, I told ya it was crappy! 🎰
 
@@ -63,7 +63,7 @@ let cli = commandLineParams.newCrappyCli(
 
 # ^ used for corner cases where you have positionals
 # right after switches, for example:
-# 
+#
 #   mycli -v filename.json
 #
 # ^ in this case, we want the `-v` to be a flag and
