@@ -9,12 +9,12 @@ type
         switches: Table[string, string]
 
 
-proc isSwitch(value: string): bool {.inline, noSideEffect.} =
+func isSwitch(value: string): bool {.inline.} =
     # Does this string start with a dash?
     result = value.strip.startsWith "-"
 
 
-proc removeSwitchToken(value: string): string {.noSideEffect.} =
+func removeSwitchToken(value: string): string =
     ## Removes upto 2 preceding dashes.
     result = value
     if value.startsWith "--":
@@ -23,56 +23,56 @@ proc removeSwitchToken(value: string): string {.noSideEffect.} =
         result = value[1..high(value)]
 
 
-proc positionalCount*(crappy: CrappyCli): int {.noSideEffect.} =
+func positionalCount*(crappy: CrappyCli): int  =
     ## The number of positionals used.
     result = crappy.positionals.len
 
 
-proc nth*(crappy: CrappyCli, position: int): string {.noSideEffect.} =
+func nth*(crappy: CrappyCli, position: int): string =
     ## Gets the nth positional argument or "".
     result = ""
     if position > 0 and crappy.positionals.len >= position and crappy.positionals[position - 1].len > 0:
         result = crappy.positionals[position - 1]
 
 
-proc first*(crappy: CrappyCli): string {.noSideEffect.} =
+func first*(crappy: CrappyCli): string =
     ## Grabs the 1st positional argument or "".
     result = crappy.nth 1
 
 
-proc second*(crappy: CrappyCli): string {.noSideEffect.} =
+func second*(crappy: CrappyCli): string =
     ## Grabs the 2nd positional argument or "".
     result = crappy.nth 2
 
 
-proc third*(crappy: CrappyCli): string {.noSideEffect.} =
+func third*(crappy: CrappyCli): string =
     ## Grabs the 3rd positional argument or "".
     result = crappy.nth 3
 
 
-proc last*(crappy: CrappyCli): string {.noSideEffect.} =
+func last*(crappy: CrappyCli): string =
     ## Grabs the last positional argument or "".
     result = crappy.nth crappy.positionals.len
 
 
-proc switchCount*(crappy: CrappyCli): int {.noSideEffect.} =
+func switchCount*(crappy: CrappyCli): int =
     ## Counts the number of switches.
     result = crappy.switches.len
 
 
-proc has*(crappy: CrappyCli, name: string): bool {.noSideEffect.} =
+func has*(crappy: CrappyCli, name: string): bool =
     ## Do we have a switch with the given name?
     result = crappy.switches.hasKey name
 
 
-proc `[]`*(crappy: CrappyCli, name: string): string {.noSideEffect.} =
+func `[]`*(crappy: CrappyCli, name: string): string =
     ## Gets the value of a switch or "".
     result = ""
     if crappy.switches.hasKey(name) and crappy.switches[name].len > 0:
         result = crappy.switches[name]
 
 
-proc empty*(crappy: CrappyCli): bool {.noSideEffect.} =
+func empty*(crappy: CrappyCli): bool =
     ## Checks if anything at all was passed as a switch or positional.
     result = crappy.switches.len == 0 and crappy.positionals.len == 0
 
