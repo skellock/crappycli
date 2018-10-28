@@ -33,6 +33,13 @@ cli.has("force")
 # read a switch that has a value
 cli["output"]
 
+# read a switch as an int with a fallback
+cli.intValue("l", 100)
+
+# read a switch as a string with a fallback
+cli.stringValue("p", "party")
+
+
 # read positional arguments
 cli.first
 cli.second

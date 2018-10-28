@@ -1,6 +1,6 @@
 # Package
 
-version       = "1.0.3"
+version       = "1.1.0"
 author        = "Steve Kellock"
 description   = "Crappy cli argument parsing."
 license       = "MIT"
