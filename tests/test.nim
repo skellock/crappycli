@@ -38,3 +38,7 @@ doAssert newCrappyCli().empty
 doAssert newCrappyCli(params = @[]).empty
 doAssert newCrappyCli(flags = @[]).empty
 doAssert newCrappyCli(params = @[], flags = @[]).empty
+
+doAssert 💩.intValue("foo", 69) == 69
+doAssert 💩.stringValue("flip", "nope") == "it"
+doAssert 💩.stringValue("flipx", "yep") == "yep"

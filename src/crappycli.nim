@@ -1,4 +1,4 @@
-from strutils import strip, startsWith
+from strutils import strip, startsWith, parseInt
 from tables import initTable, Table, hasKey, `[]`, add, len
 from sequtils import filterIt
 from os import commandLineParams
@@ -114,3 +114,20 @@ proc newCrappyCli*(
             elif arg.len > 0:
                 # this is a positional
                 result.positionals.add arg
+
+
+proc stringValue*(cli: CrappyCli, name: string, fallback: string): string =
+    ## Gets a string from a named switch with a falling back if there's a problem.
+    result = fallback
+    if cli.has(name):
+        result = cli[name]
+
+
+proc intValue*(cli: CrappyCli, name: string, fallback: int): int =
+    ## Gets an int from a named switch with a falling back if there's a problem.
+    result = fallback
+    try:
+        if cli.has(name):
+            result = parseInt(cli[name])
+    except:
+        discard
